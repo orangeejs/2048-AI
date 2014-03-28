@@ -34,6 +34,11 @@ KeyboardInputManager.prototype.listen = function () {
     72: 3
   };
 
+  map[OrangeeJS.KEYS.KEY_UP] = 0;
+  map[OrangeeJS.KEYS.KEY_RIGHT] = 1;
+  map[OrangeeJS.KEYS.KEY_DOWN] = 2;
+  map[OrangeeJS.KEYS.KEY_LEFT] = 3;
+
   document.addEventListener("keydown", function (event) {
     var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
