@@ -55,6 +55,7 @@ h1.title {
   background: #bbada0;
   padding: 15px 25px;
   font-size: 25px;
+  width: 25px;
   height: 25px;
   line-height: 47px;
   font-weight: bold;
@@ -107,7 +108,7 @@ hr {
   margin-bottom: 30px; }
 
 .container {
-  width: 500px;
+  width: 100%;
   margin: 0 auto; }
 
 @-webkit-keyframes fade-in {
@@ -131,8 +132,15 @@ hr {
   100% {
     opacity: 1; } }
 
+.info-container {
+  float:right;
+  margin-right: 40px;
+  width: 50%;
+}
+
 .game-container {
-  margin-top: 40px;
+  float:left;
+  margin-left: 40px;
   position: relative;
   padding: 15px;
   cursor: default;

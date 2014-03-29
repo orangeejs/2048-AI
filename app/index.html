@@ -7,22 +7,6 @@
 <body onload="OrangeeJS.init();">
 
   <div class="container">
-    <div class="heading">
-      <h1 class="title">2048</h1>
-      <div class="score-container">0</div>
-    </div>
-    <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-
-    <div class='controls'>
-      <div id='hint-button-container'>
-        <button id='hint-button' class='ai-button'>Get Hint</button>
-      </div>
-      <div id='feedback-container'> </div>
-      <div id='run-button-container'>
-        <button id='run-button' class='ai-button'>Auto-run</button>
-      </div>
-    </div>
-
     <div class="game-container">
       <div class="game-message">
         <p></p>
@@ -64,17 +48,36 @@
       </div>
     </div>
 
-    <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
-    </p>
-    <hr>
-    <p>
-    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
-    </p>
-    <p>
-    AI solver by <a href="https://github.com/ov3y/2048-AI">Matt Overlan</a>
-    </p>
-    <div class="sharing">
+    <div class="info-container">
+      <div class="heading">
+        <h1 class="title">2048</h1>
+        <div class="score-container">0</div>
+      </div>
+      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <div class='controls' style="display:none;">
+        <div id='hint-button-container'>
+          <button id='hint-button' class='ai-button'>Get Hint</button>
+        </div>
+        <div id='feedback-container'> </div>
+        <div id='run-button-container'>
+          <button id='run-button' class='ai-button'>Auto-run</button>
+        </div>
+      </div>
+      <p class="game-explanation">
+        <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+      </p>
+      <hr>
+      <p>
+      Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+      </p>
+      <p>
+      AI solver by <a href="https://github.com/ov3y/2048-AI">Matt Overlan</a>
+      </p>
+      <p>
+      Ported to smart tv by <a href="http://orangee.tv">OrangeeJS</a>.
+      </p>
+      <div class="sharing">
+      </div>
     </div>
   </div>
 
