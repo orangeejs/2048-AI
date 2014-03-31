@@ -5,36 +5,56 @@ function GameManager(size, InputManager, Actuator) {
 
   this.running      = false;
 
-  this.inputManager.on("move", this.move.bind(this));
-  this.inputManager.on("restart", this.restart.bind(this));
+  var self = this;
+  
+  this.inputManager.on("move", function(direction) {
+    var result = self.grid.move(direction);
+      self.score += result.score;
+
+      if (!result.won) {
+        if (result.moved) {
+          self.grid.computerMove();
+        }
+      } else {
+        self.won = true;
+      }
+
+      //console.log(self.grid.valueSum());
+
+      if (!self.grid.movesAvailable()) {
+        self.over = true; // Game over!
+      }
+
+      self.actuate();
+
+  });
+
+  this.inputManager.on("restart", function() {
+    self.actuator.restart();
+    self.running = false;
+    self.actuator.setRunButton('Auto-run');
+    self.setup();
+  });
 
   this.inputManager.on('think', function() {
     var best = this.ai.getBest();
-    this.actuator.showHint(best.move);
-  }.bind(this));
+    self.actuator.showHint(best.move);
+  });
 
 
   this.inputManager.on('run', function() {
     if (this.running) {
-      this.running = false;
-      this.actuator.setRunButton('Auto-run');
+      that.running = false;
+      that.actuator.setRunButton('Auto-run');
     } else {
-      this.running = true;
-      this.run()
-      this.actuator.setRunButton('Stop');
+      that.running = true;
+      that.run()
+      that.actuator.setRunButton('Stop');
     }
-  }.bind(this));
+  });
 
   this.setup();
 }
-
-// Restart the game
-GameManager.prototype.restart = function () {
-  this.actuator.restart();
-  this.running = false;
-  this.actuator.setRunButton('Auto-run');
-  this.setup();
-};
 
 // Set up the game
 GameManager.prototype.setup = function () {
@@ -60,28 +80,6 @@ GameManager.prototype.actuate = function () {
     won:   this.won
   });
 };
-
-// makes a given move and updates state
-GameManager.prototype.move = function(direction) {
-  var result = this.grid.move(direction);
-  this.score += result.score;
-
-  if (!result.won) {
-    if (result.moved) {
-      this.grid.computerMove();
-    }
-  } else {
-    this.won = true;
-  }
-
-  //console.log(this.grid.valueSum());
-
-  if (!this.grid.movesAvailable()) {
-    this.over = true; // Game over!
-  }
-
-  this.actuate();
-}
 
 // moves continuously until game is over
 GameManager.prototype.run = function() {

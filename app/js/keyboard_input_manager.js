@@ -52,12 +52,18 @@ KeyboardInputManager.prototype.listen = function () {
         self.emit("move", mapped);
       }
 
-      if (event.which === 32) self.restart.bind(self)(event);
+      if (event.which === OrangeeJS.KEYS.KEY_ENTER) {
+        event.preventDefault();
+        self.emit("restart");
+      }
     }
   });
 
   var retry = document.getElementsByClassName("retry-button")[0];
-  retry.addEventListener("click", this.restart.bind(this));
+  retry.addEventListener("click", function(e) {
+    e.preventDefault();
+    self.emit("restart");
+  });
 
   var hintButton = document.getElementById('hint-button');
   hintButton.addEventListener('click', function(e) {
@@ -75,7 +81,7 @@ KeyboardInputManager.prototype.listen = function () {
 
 
   // Listen to swipe events
-  var gestures = [Hammer.DIRECTION_UP, Hammer.DIRECTION_RIGHT,
+  /*var gestures = [Hammer.DIRECTION_UP, Hammer.DIRECTION_RIGHT,
                   Hammer.DIRECTION_DOWN, Hammer.DIRECTION_LEFT];
 
   var gameContainer = document.getElementsByClassName("game-container")[0];
@@ -89,7 +95,7 @@ KeyboardInputManager.prototype.listen = function () {
     mapped = gestures.indexOf(event.gesture.direction);
 
     if (mapped !== -1) self.emit("move", mapped);
-  });
+  });*/
 };
 
 KeyboardInputManager.prototype.restart = function (event) {
