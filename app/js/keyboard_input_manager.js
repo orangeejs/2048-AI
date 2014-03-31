@@ -52,7 +52,7 @@ KeyboardInputManager.prototype.listen = function () {
         self.emit("move", mapped);
       }
 
-      if (event.which === OrangeeJS.KEYS.KEY_RETURN) {
+      if (event.which === OrangeeJS.KEYS.KEY_ENTER) {
         event.preventDefault();
         self.emit("restart");
       }

@@ -30,7 +30,13 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
 HTMLActuator.prototype.restart = function () {
   //if (ga) ga("send", "event", "game", "restart");
-  this.clearMessage();
+  //enter key only work when dialog is shown
+  if (this.messageContainer.classList.contains("game-won") || this.messageContainer.classList.contains("game-over")) {
+    this.clearMessage();
+	  return true;
+  } else {
+	  return false;
+  }
 };
 
 HTMLActuator.prototype.clearContainer = function (container) {

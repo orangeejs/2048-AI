@@ -30,10 +30,11 @@ function GameManager(size, InputManager, Actuator) {
   });
 
   this.inputManager.on("restart", function() {
-    self.actuator.restart();
-    self.running = false;
-    self.actuator.setRunButton('Auto-run');
-    self.setup();
+    if (self.actuator.restart()) {
+      self.running = false;
+      self.actuator.setRunButton('Auto-run');
+      self.setup();
+    }
   });
 
   this.inputManager.on('think', function() {
