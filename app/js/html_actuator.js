@@ -116,13 +116,14 @@ HTMLActuator.prototype.message = function (won) {
 
   this.clearContainer(this.sharingContainer);
   //this.sharingContainer.appendChild(this.scoreTweetButton());
-  twttr.widgets.load();
+  //twttr.widgets.load();
 };
 
 HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-won", "game-over");
 };
 
+/*
 HTMLActuator.prototype.scoreTweetButton = function () {
   var tweet = document.createElement("a");
   tweet.classList.add("twitter-share-button");
@@ -135,7 +136,7 @@ HTMLActuator.prototype.scoreTweetButton = function () {
   tweet.setAttribute("data-text", text);
 
   return tweet;
-};
+};*/
 
 
 HTMLActuator.prototype.showHint = function(hint) {
